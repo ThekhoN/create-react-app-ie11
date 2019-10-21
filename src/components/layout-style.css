@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --width-sidebar-nav: 200px;
+    --height-filters: 145px;
+    --height-footer: 56px;
+    --height-header: 101px;
+  }
+  
+  body {
+    font-family: Courier, sans-serif;
+  }
+  
+  button {
+    border: 1px solid #ccc;
+    padding: 0.3rem 0.6rem;
+    border-radius: 3px;
+    outline: 0;
+  }
+  
+  .page {
+    min-width: 1200px;
+  }
+  
+  .header {
+    padding: 2rem;
+    background: #ccc;
+  }
+  
+  .main-content:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  nav {
+    width: var(--width-sidebar-nav);
+    float: left;
+    border: 1px solid orange;
+    height: calc(100vh - (var(--height-footer) + var(--height-header)));
+    min-height: 360px;
+  }
+  
+  nav li {
+    padding: 2rem;
+  }
+  
+  main {
+    display: block;
+    width: calc(100% - var(--width-sidebar-nav));
+    float: left;
+    overflow: hidden;
+  }
+  
+  .filters {
+    background: #f2f2f2;
+    height: var(--height-filters);
+    transform: translateY(0px);
+    transition: transform 0.3s ease;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  
+  .filters.hide {
+    /* why this does NOT work ? */
+  /*   transform: translateY(-var(--height-filters)); */
+  
+    /* this works */
+    /* transform: translateY(-145px); */
+  
+    /* this works */
+    /* for IE11 */
+    transform: translateY(-145px);
+    transform: translateY(calc(5px - var(--height-filters)));
+  }
+  
+  .filters h2 {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .filters ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+  
+  .filters > ul > li {
+    border: 1px solid #ccc;
+    padding: 1rem 1.6rem;
+    background: white;
+  }
+  
+  .toggle-filter-visibility {
+    position: absolute;
+    right: 0;
+    top: var(--height-filters);
+  }
+  
+  .content {
+    padding: 1rem;
+    height: calc(
+      100vh - (var(--height-filters) + var(--height-header) + var(--height-footer))
+    );
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: #eee;
+  }
+  
+  p {
+    padding: 1rem 0;
+  }
+  
+  .overflow-x-auto {
+    overflow-x: auto;
+  }
+  
